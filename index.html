@@ -1136,9 +1136,28 @@ beginBtn.addEventListener('click',()=>{
   }
 });
 const wedding=new Date('2026-11-15T07:45:00+05:30').getTime();
-// From the day after the wedding, the first slide celebrates instead of inviting.
+// From the day after the wedding, every slide celebrates instead of inviting.
 if(Date.now()>=new Date('2026-11-16T00:00:00+05:30').getTime()){
-  document.querySelector('.hero .hero-sub').innerHTML='Yay!! We tied the knot!<br>You can always wish us on our anniversary!!';
+  const afterWedding={
+    '.hero .hero-sub':'Yay!! We tied the knot!<br>You can always wish us on our anniversary!!',
+    '#families .fam-note':'With the blessings of our parents and all of you, we are now happily married.',
+    '#celebration .section-kicker':'Just married',
+    '#celebration h2':'Our forever<br><i>has begun.</i>',
+    '#celebration .lead':'Two hearts, two families and one sacred fire. The promise meant for seven lifetimes has begun, and we are so grateful for every blessing you sent our way.',
+    '#celebration .cracker-caption':'Tap to relive our wedding date',
+    '#cracker-date span':'We got married on',
+    '#cracker-help':'A burst of celebration for our big day.',
+    '#reception .lead':'The night sparkled as we celebrated love with our family and friends.',
+    '#wedding .lead':'A traditional celebration of two hearts, two families and one beautiful forever. Thank you for blessing us.',
+    '#venue .section-kicker':'Where it all happened',
+    '#venue h2':'Where we said <i>forever.</i>',
+    '#venue .lead':'Thank you for celebrating with us. Tap below to open the venue location in Google Maps.',
+    '#venue .contact-card .eyebrow':'Stay in touch',
+    'footer .eyebrow':'Our forever has begun'
+  };
+  for(const [sel,html] of Object.entries(afterWedding)){const el=document.querySelector(sel);if(el)el.innerHTML=html;}
+  // The countdown and the add-to-calendar buttons are no longer needed.
+  document.querySelectorAll('#celebration .countdown, .cal-btn').forEach(el=>el.style.display='none');
 }
 function setCountdown(prefix,target){
   let diff=Math.max(0,target-Date.now());
