@@ -1170,8 +1170,8 @@ window.onYouTubeIframeAPIReady=function(){
       onReady:()=>{songReady=true;if(songOn)playSong();else{songPlayer.mute();songPlayer.playVideo();}},
       onStateChange:e=>{
         if(e.data===YT.PlayerState.PLAYING&&!songPrimed&&!songOn){songPrimed=true;songPlayer.pauseVideo();songPlayer.seekTo(SONG_START,true);}
-        // When the song ends, loop back to the 5-second mark.
-        if(e.data===YT.PlayerState.ENDED&&songOn){songPlayer.seekTo(SONG_START,true);songPlayer.playVideo();}
+        // The song plays once: when it ends it stays stopped, even if guests switch away and come back.
+        if(e.data===YT.PlayerState.ENDED&&songOn){songOn=false;document.getElementById('music').classList.remove('song-active');}
       }
     }
   });
