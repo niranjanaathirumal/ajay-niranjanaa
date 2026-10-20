@@ -1136,6 +1136,10 @@ beginBtn.addEventListener('click',()=>{
   }
 });
 const wedding=new Date('2026-11-15T07:45:00+05:30').getTime();
+// From the day after the wedding, the first slide celebrates instead of inviting.
+if(Date.now()>=new Date('2026-11-16T00:00:00+05:30').getTime()){
+  document.querySelector('.hero .hero-sub').innerHTML='Yay!! We tied the knot!<br>You can always wish us on our anniversary!!';
+}
 function setCountdown(prefix,target){
   let diff=Math.max(0,target-Date.now());
   const values={days:Math.floor(diff/86400000),hours:Math.floor(diff%86400000/3600000),minutes:Math.floor(diff%3600000/60000),seconds:Math.floor(diff%60000/1000)};
