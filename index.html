@@ -1156,8 +1156,8 @@ function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearT
 
 /* Background song: a hidden player loads with the page but stays silent
    until "Begin our celebration" is tapped. Only the audio is heard. */
-const SONG_ID='b68HETiNO98',SONG_START=5; // start 5 seconds into the song
-let songPlayer=null,songReady=false,songOn=false;
+const SONG_ID='b68HETiNO98',SONG_START=8; // start 8 seconds into the song, where the singing begins
+let songPlayer=null,songReady=false,songOn=false,songPrimed=false;
 const ytScript=document.createElement('script');
 ytScript.src='https://www.youtube.com/iframe_api';
 document.head.appendChild(ytScript);
@@ -1166,9 +1166,13 @@ window.onYouTubeIframeAPIReady=function(){
     videoId:SONG_ID,
     playerVars:{autoplay:0,controls:0,disablekb:1,playsinline:1,rel:0,start:SONG_START},
     events:{
-      onReady:()=>{songReady=true;if(songOn)playSong();},
-      // When the song ends, loop back to the 5-second mark.
-      onStateChange:e=>{if(e.data===YT.PlayerState.ENDED&&songOn){songPlayer.seekTo(SONG_START,true);songPlayer.playVideo();}}
+      // Buffer the song silently in advance (muted play, then pause) so the tap starts it at once.
+      onReady:()=>{songReady=true;if(songOn)playSong();else{songPlayer.mute();songPlayer.playVideo();}},
+      onStateChange:e=>{
+        if(e.data===YT.PlayerState.PLAYING&&!songPrimed&&!songOn){songPrimed=true;songPlayer.pauseVideo();songPlayer.seekTo(SONG_START,true);}
+        // When the song ends, loop back to the 5-second mark.
+        if(e.data===YT.PlayerState.ENDED&&songOn){songPlayer.seekTo(SONG_START,true);songPlayer.playVideo();}
+      }
     }
   });
 };
@@ -1176,6 +1180,7 @@ function playSong(){
   songOn=true;
   document.getElementById('music').classList.add('song-active');
   if(!songReady)return;
+  songPrimed=true;
   songPlayer.unMute();songPlayer.setVolume(100);songPlayer.playVideo();
 }
 function pauseSong(){
