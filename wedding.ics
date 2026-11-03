@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ajay & Niranjanaa//Invitation//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wedding@ajay-niranjanaa-invite
+DTSTAMP:20261018T000000Z
+DTSTART:20261115T021500Z
+DTEND:20261115T031500Z
+SUMMARY:Wedding · Ajay & Niranjanaa
+DESCRIPTION:Wedding of Ajay & Niranjanaa\, Sunday 15 November 2026. Muhurth
+ am 7:45 to 8:45 AM at M. Malliga Mahal\, Ambattur.\nVenue: https://www.goo
+ gle.com/maps/search/?api=1&query=M+Mallika+Mahal%2C+East+Banu+Nagar%2C+Amb
+ attur%2C+Chennai+600053\nInvitation: https://niranjanaathirumal.github.io/
+ ajay-niranjanaa/
+LOCATION:M. Malliga Mahal\, No. 1\, Pudur East Banu Nagar\, Redhills Main R
+ oad\, Ambattur\, Chennai 600053
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR

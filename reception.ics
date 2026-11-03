@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ajay & Niranjanaa//Invitation//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:reception@ajay-niranjanaa-invite
+DTSTAMP:20261018T000000Z
+DTSTART:20261114T130000Z
+DTEND:20261114T170000Z
+SUMMARY:Reception · Ajay & Niranjanaa
+DESCRIPTION:Reception of Ajay & Niranjanaa\, Saturday 14 November 2026\, fr
+ om 6:30 PM at M. Malliga Mahal\, Ambattur.\nVenue: https://www.google.com/
+ maps/search/?api=1&query=M+Mallika+Mahal%2C+East+Banu+Nagar%2C+Ambattur%2C
+ +Chennai+600053\nInvitation: https://niranjanaathirumal.github.io/ajay-nir
+ anjanaa/
+LOCATION:M. Malliga Mahal\, No. 1\, Pudur East Banu Nagar\, Redhills Main R
+ oad\, Ambattur\, Chennai 600053
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR
